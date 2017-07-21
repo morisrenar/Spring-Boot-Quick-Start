@@ -31,13 +31,26 @@ public class TopicService {
 	}
 	
 	public void addTopic(Topic topic) {
-		if(topic != null) {
-			System.out.println("New Topic id: " + topic.getId());
-			System.out.println("New Topic name: " + topic.getName());
-			System.out.println("New Topic description: " + topic.getDescription());
-		} else {
-			System.out.println("New Topic is null");
-		}
 		topics.add(topic);
+	}
+	
+	public void updateTopic(String id, Topic topic) {
+		for(int index=0; index<topics.size(); index++) {
+			Topic tp = topics.get(index);
+			if(tp.getId().equals(id)) {
+				topics.set(index, topic);
+				return;
+			}
+		}
+	}
+	
+	public void deleteTopic(String id) {
+		for(int index=0; index<topics.size(); index++) {
+			Topic tp = topics.get(index);
+			if (tp.getId().equals(id)) {
+				topics.remove(index);
+				return;
+			}
+		}
 	}
 }
